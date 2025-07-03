@@ -1,11 +1,22 @@
 import ollama
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import chromadb
 from chromadb.utils import embedding_functions
 import uvicorn
 from pydantic import BaseModel
 
+# Initialize FastAPI
 app = FastAPI()
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Initialize ChromaDB
 chroma_client = chromadb.Client()
