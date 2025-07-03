@@ -2,12 +2,8 @@ import ollama
 from fastapi import FastAPI, HTTPException
 import chromadb
 from chromadb.utils import embedding_functions
-from chromadb.api.types import EmbeddingFunction
 import uvicorn
 from pydantic import BaseModel
-from typing import List
-
-
 
 app = FastAPI()
 
