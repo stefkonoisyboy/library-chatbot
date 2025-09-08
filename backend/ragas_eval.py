@@ -4,11 +4,10 @@ from ragas import evaluate
 from ragas.metrics import faithfulness, answer_relevancy, context_precision, context_recall
 from langchain_ollama import ChatOllama, OllamaEmbeddings
 
-# Your FastAPI RAG pipeline endpoint
+# FastAPI RAG pipeline endpoint
 API_URL = "http://localhost:8000/query"
 
-# Define a batch of evaluation queries with ground truth
-# (You can extend this list)
+# Evaluation queries with ground truth
 eval_queries = [
     {
         "question": "Who wrote 1984?",
