@@ -49,7 +49,7 @@ for q in eval_queries:
 # Convert results into a HuggingFace dataset
 dataset = Dataset.from_list(results)
 
-# Define Ollama model to use for evaluation (must be running locally)
+# Define Ollama model to use for evaluation
 ollama_llm = ChatOllama(model="hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF")
 
 # Define Ollama embeddings for evaluation
