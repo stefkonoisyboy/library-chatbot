@@ -97,7 +97,7 @@ collection.add(
 
 class Query(BaseModel):
     text: str
-    top_k: int = 3
+    top_k: int = 5
 
 @app.post("/query")
 async def query_books(query: Query):
@@ -124,10 +124,14 @@ async def query_books(query: Query):
         
         # Get LLM response
         instruction_prompt = (
-            "You are a helpful chatbot.\n"
-            "Use only the following pieces of context to answer the question. Don't make up any new information:\n"
+            "You are a helpful assistant answering questions about books.\n\n"
+            "Context information is provided below. Use ONLY this information to answer the user’s question.\n"
+            "If the answer is not in the context, reply with: 'I don’t know based on the given context.'\n"
+            "Be concise and direct. Do not add extra explanations or unrelated details.\n\n"
+            "Context:\n"
             + "\n".join([f" - {doc}" for doc in documents])
         )
+
 
         stream = ollama.chat(
             model="hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF",
